@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>E-Corp</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: 'AIzaSyBHvdldNW9UoDJHTxcXsPaBn5gnL6nWAkw',
+        authDomain: 'data-visualizations-d3.firebaseapp.com',
+        projectId: 'data-visualizations-d3',
+        storageBucket: 'data-visualizations-d3.appspot.com',
+        messagingSenderId: '863867183148',
+        appId: '1:863867183148:web:a749a0521021fc15d87189',
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      db.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="graph.js" defer></script>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="pink section">
+      <h2 class="white-text center">E-Corp</h2>
+    </div>
+    <div class="grey lighten-3 section grey-text" style="position: relative">
+      <p class="flow-text center">The largest conglomerate...</p>
+      <a href="#modal" class="btn-floating btn-large halfway-fab pink modal-trigger">
+        <i class="material-icons">add</i>
+      </a>
+    </div>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h4 class="pink-text center">Add New Employee</h4>
+        <form>
+          <div class="input-field">
+            <input type="text" id="name" placeholder="Employee Name" />
+          </div>
+          <div class="input-field">
+            <input type="text" id="parent" placeholder="Reports to..." />
+          </div>
+          <div class="input-field">
+            <input type="text" id="department" placeholder="Department" />
+          </div>
+          <div class="input-field">
+            <button class="btn pink white-text">Add Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="canvas"></div>
+    </div>
+  </body>
+</html>
